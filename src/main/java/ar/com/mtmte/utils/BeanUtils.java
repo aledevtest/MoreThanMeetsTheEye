@@ -17,4 +17,21 @@ public class BeanUtils {
 		}
 	}
 
+	public static String getProperty(Object object, String originPropertyName) {
+		try {
+			return org.apache.commons.beanutils.BeanUtils.getProperty(object, originPropertyName);
+		} catch (Throwable e) {
+			throw new BeanUtilsException(e);
+		}
+	}
+
+	public static void setProperty(Object object,
+			String destinationPropertyName, Object propertyValue) {
+		try {
+			org.apache.commons.beanutils.BeanUtils.setProperty(object, destinationPropertyName, propertyValue);
+		} catch (Throwable e) {
+			throw new BeanUtilsException(e);
+		}
+	}
+
 }
