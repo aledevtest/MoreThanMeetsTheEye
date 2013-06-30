@@ -1,6 +1,5 @@
 package ar.com.mtmte.core;
 
-
 public interface FieldTransformer {
 
 	String getOriginPropertyName();

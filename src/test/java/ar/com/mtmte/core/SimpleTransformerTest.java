@@ -5,35 +5,33 @@ import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 
-import ar.com.mtmte.core.test0.EntityA;
-import ar.com.mtmte.core.test0.EntityB;
+import ar.com.mtmte.core.test0.Entity0A;
+import ar.com.mtmte.core.test0.Entity0B;
 import ar.com.mtmte.exceptions.BeanUtilsException;
 
-public class BasicTransformerTest {
+public class SimpleTransformerTest {
 	private static final String MOCK_NAME = "entityName";
 
 	@Test
 	public void testBasicTransformerTransform() {
-		EntityA entityA = new EntityA();
+		Entity0A entityA = new Entity0A();
 		entityA.setName(MOCK_NAME);
-		EntityB entityB = (EntityB) new BasicTransformer().transform(entityA,
-				EntityB.class);
+		Entity0B entityB = (Entity0B) new SimpleTransformer().transform(entityA, Entity0B.class);
 
 		assertEquals(MOCK_NAME, entityB.getName());
 	}
 
 	@Test(expected = BeanUtilsException.class)
 	public void testBasicTransformerTransformWithNullOriginEntity() {
-		EntityA entityA = null;
-		new BasicTransformer().transform(entityA, EntityB.class);
+		Entity0A entityA = null;
+		new SimpleTransformer().transform(entityA, Entity0B.class);
 	}
 
 	@Test
 	public void testBasicTransformerTransformWithNullField() {
-		EntityA entityA = new EntityA();
+		Entity0A entityA = new Entity0A();
 		entityA.setName(null);
-		EntityB entityB = (EntityB) new BasicTransformer().transform(entityA,
-				EntityB.class);
+		Entity0B entityB = (Entity0B) new SimpleTransformer().transform(entityA, Entity0B.class);
 
 		assertNull(entityB.getName());
 	}

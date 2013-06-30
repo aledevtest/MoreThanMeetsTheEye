@@ -1,6 +1,6 @@
 package ar.com.mtmte.core.test0;
 
-public class EntityA {
+public class Entity0B {
 	private String name;
 
 	public String getName() {

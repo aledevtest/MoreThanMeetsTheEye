@@ -9,7 +9,7 @@ public class AddFieldTransformer implements FieldTransformer {
 	private final Object defaultValue;
 
 	public AddFieldTransformer(String newFieldName, Object defaultValue) {
-		this.newFieldName  = newFieldName;
+		this.newFieldName = newFieldName;
 		this.defaultValue = defaultValue;
 	}
 

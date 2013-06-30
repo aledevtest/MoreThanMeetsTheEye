@@ -3,7 +3,6 @@ package ar.com.mtmte.core;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class TransformerLocator {
 
 	private Map<String, Transformer> namedTransformers = new HashMap<String, Transformer>();

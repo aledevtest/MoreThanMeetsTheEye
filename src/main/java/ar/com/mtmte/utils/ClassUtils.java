@@ -5,7 +5,8 @@ import ar.com.mtmte.exceptions.ClassUtilsException;
 /**
  * @author Alejandro Zalazar <alejandrozalazar@gmail.com>
  * 
- * Implements some class + reflection methods wrapping the exceptions with runtime mtmte exceptions
+ *         Implements some class + reflection methods wrapping the exceptions
+ *         with runtime mtmte exceptions
  */
 public class ClassUtils {
 

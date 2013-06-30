@@ -1,8 +1,7 @@
 package ar.com.mtmte.exceptions;
 
 /**
- * @author Alejandro Zalazar <alejandrozalazar@gmail.com>
- * Master exception
+ * @author Alejandro Zalazar <alejandrozalazar@gmail.com> Master exception
  */
 public class MTMTEException extends RuntimeException {
 
