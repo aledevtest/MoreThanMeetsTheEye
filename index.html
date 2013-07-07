@@ -34,6 +34,21 @@
         <p>More than meets the eye!</p>
 
 <p>It looks like a transformation tool!</p>
+
+<p>Example: transform to a bean with the same fields/values plus two more fields</p>
+
+<p><code>
+    Ebean bean = new Ebean();
+    bean.setName("name");</code></p>
+
+<pre><code>DefaultTransformer transformer = new DefaultTransformer();
+transformer.defineNewField("selectedField", "selectedValue");
+transformer.defineNewField("changedField", "changedValue");
+
+Object transformed = transformer.transform(bean);
+</code></pre>
+
+<p></p>
       </section>
     </div>
 
