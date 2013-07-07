@@ -1,12 +1,7 @@
 package ar.com.mtmte.core.type.transformer;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import ar.com.mtmte.core.AbstractTransformer;
 import ar.com.mtmte.core.DefinedTransformer;
-import ar.com.mtmte.core.model.Instance;
-import ar.com.mtmte.core.model.PropertyTransformation;
 import ar.com.mtmte.core.model.Type;
 
 public class ExplicitTransformer extends AbstractTransformer implements DefinedTransformer {

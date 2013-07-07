@@ -1,13 +1,7 @@
 package ar.com.mtmte.core.model.transformation;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-import ar.com.mtmte.core.model.Instance;
 import ar.com.mtmte.core.model.Property;
 import ar.com.mtmte.core.model.PropertyTransformation;
-import ar.com.mtmte.utils.PropertyUtils;
 
 public class ChangePropertyNameTransformation extends PropertyTransformation {
 
