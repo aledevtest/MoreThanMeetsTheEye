@@ -1,42 +1,40 @@
 package ar.com.mtmte.core.type.transformer;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import ar.com.mtmte.core.AbstractTransformer;
 import ar.com.mtmte.core.DefinedTransformer;
-import ar.com.mtmte.core.FieldTransformer;
-import ar.com.mtmte.core.field.transformer.AddFieldTransformer;
-import ar.com.mtmte.core.field.transformer.EditFieldTransformer;
-import ar.com.mtmte.core.field.transformer.ReadPropertyFieldTransformer;
+import ar.com.mtmte.core.model.Instance;
+import ar.com.mtmte.core.model.PropertyTransformation;
+import ar.com.mtmte.core.model.Type;
 
-public class ExplicitTransformer implements DefinedTransformer {
-	private List<FieldTransformer> fieldTransformations = new ArrayList<FieldTransformer>();
-
+public class ExplicitTransformer extends AbstractTransformer implements DefinedTransformer {
+	private final Type destinationType;
+	private final Type originType;
+	
+	public ExplicitTransformer(Class originType, Class destinationType) {
+		this.originType = new Type(originType);
+		this.destinationType = new Type(destinationType);
+	}
+	
 	@Override
-	public Object transform(Object object) {
-		Map<String, Object> transformedValue = new HashMap<String, Object>();
-
-		for (FieldTransformer fieldTransformation : fieldTransformations) {
-			fieldTransformation.applyTransformation(object, transformedValue);
-		}
-
-		return transformedValue;
+	protected Type getOriginType() {
+		return originType;
 	}
 
 	@Override
-	public void defineSimpleField(final String propertyName) {
-		fieldTransformations.add(new ReadPropertyFieldTransformer(propertyName));
+	protected Type getDestinationType() {
+		return destinationType;
 	}
 
-	@Override
-	public void defineField(final String originPropertyName, final String destinationPropertyName) {
-		fieldTransformations.add(new EditFieldTransformer(originPropertyName, destinationPropertyName));
-	}
-
-	@Override
-	public void defineNewField(String newFieldName, Object defaultValue) {
-		fieldTransformations.add(new AddFieldTransformer(newFieldName, defaultValue));
-	}
+//	@Override
+//	protected List<PropertyTransformation> getPropertyTransformations(Instance originInstance, Instance destinationInstance) {
+//		List<PropertyTransformation> propertyTransformations = new ArrayList<PropertyTransformation>();
+//		for (PropertyTransformation propertyTransformation : alternativeDestinationPropertyTransformations.values()) {
+//			propertyTransformations.add(propertyTransformation);
+//		}
+//		
+//		return propertyTransformations;
+//	}
 }

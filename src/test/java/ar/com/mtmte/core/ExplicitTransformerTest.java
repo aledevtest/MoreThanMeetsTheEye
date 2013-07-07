@@ -2,6 +2,7 @@ package ar.com.mtmte.core;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.Test;
@@ -32,7 +33,7 @@ public class ExplicitTransformerTest {
 		Entity1A entity1A = new Entity1A();
 		entity1A.setName(ENTITY_NAME_VALUE);
 
-		ExplicitTransformer entity1ATransformer = new ExplicitTransformer();
+		ExplicitTransformer entity1ATransformer = new ExplicitTransformer(Entity1A.class, HashMap.class);
 		entity1ATransformer.defineSimpleField(ENTITY_NAME_FIELD);
 
 		Object transformed = entity1ATransformer.transform(entity1A);
@@ -48,7 +49,7 @@ public class ExplicitTransformerTest {
 		Entity1A entity1A = new Entity1A();
 		entity1A.setCode(ENTITY_CODE_VALUE);
 
-		ExplicitTransformer entity1ATransformer = new ExplicitTransformer();
+		ExplicitTransformer entity1ATransformer = new ExplicitTransformer(Entity1A.class, HashMap.class);
 		entity1ATransformer.defineField(ENTITY_CODE_FIELD, ENTITY_CODE_FIELD_TRANSFORMED);
 
 		Object transformed = entity1ATransformer.transform(entity1A);
@@ -69,7 +70,7 @@ public class ExplicitTransformerTest {
 		associate.setType(ENTITY_ASSOCIATE_TYPE_VALUE);
 		entity1A.setAssociate(associate);
 
-		ExplicitTransformer entity1ATransformer = new ExplicitTransformer();
+		ExplicitTransformer entity1ATransformer = new ExplicitTransformer(Entity1A.class, HashMap.class);
 		entity1ATransformer.defineField(ENTITY_ASSOCIATE_TYPE_FIELD, ENTITY_ASSOCIATE_TYPE_FIELD_TRANSFORMED);
 
 		Object transformed = entity1ATransformer.transform(entity1A);
@@ -86,7 +87,7 @@ public class ExplicitTransformerTest {
 	public void testExplicitTransformerWithDefinedNewFieldShouldCreateTheNewPropertyAndSetTheDefaultValue() {
 		Entity1A entity1A = new Entity1A();
 
-		ExplicitTransformer entity1ATransformer = new ExplicitTransformer();
+		ExplicitTransformer entity1ATransformer = new ExplicitTransformer(Entity1A.class, HashMap.class);
 		entity1ATransformer.defineNewField(SELECTION_FIELD_NAME, SELECTION_FIELD_VALUE);
 
 		Object transformed = entity1ATransformer.transform(entity1A);

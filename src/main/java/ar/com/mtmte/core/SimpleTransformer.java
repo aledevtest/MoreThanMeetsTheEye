@@ -11,7 +11,7 @@ import ar.com.mtmte.utils.TransformerUtils;
  */
 public class SimpleTransformer implements Transformer {
 
-	public Object transform(Object origin, Class<?> class1) {
+	public Object transform(Object origin, Class class1) {
 		Object dest = ClassUtils.newInstance(class1);
 		BeanUtils.copyProperties(dest, origin);
 		return dest;

@@ -1,27 +1,36 @@
 package ar.com.mtmte.utils;
 
+import java.beans.PropertyDescriptor;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.Set;
 
-import org.apache.commons.beanutils.BeanUtils;
-
-import ar.com.mtmte.core.model.Instance;
 import ar.com.mtmte.core.model.Property;
 import ar.com.mtmte.exceptions.PropertyUtilsException;
 
 public class PropertyUtils {
 
-	public static Collection<Property> getProperties(Instance originInstance) {
+	@SuppressWarnings("rawtypes")
+	public static Collection<Property> getProperties(Class type) {
 		try {
-			Set propertyNames = BeanUtils.describe(originInstance.getInstance()).keySet();
+			PropertyDescriptor[] propertyDescriptors = org.apache.commons.beanutils.PropertyUtils.getPropertyDescriptors(type);
 			Collection<Property> properties = new ArrayList<Property>();
-			for (Iterator iterator = propertyNames.iterator(); iterator.hasNext();) {
-				String propertyName = (String) iterator.next();
-				properties.add(new Property(propertyName));
+			for (PropertyDescriptor propertyDescriptor: propertyDescriptors) {
+				properties.add(new Property(propertyDescriptor.getName()));
 			}
 			return properties;
+		} catch (Throwable e) {
+			throw new PropertyUtilsException(e);
+		}
+	}
+
+	public static Collection<String> getPropertyNames(Class type) {
+		try {
+			PropertyDescriptor[] propertyDescriptors = org.apache.commons.beanutils.PropertyUtils.getPropertyDescriptors(type);
+			Collection<String> propertyNames = new ArrayList<String>();
+			for (PropertyDescriptor propertyDescriptor: propertyDescriptors) {
+				propertyNames.add(propertyDescriptor.getName());
+			}
+			return propertyNames;
 		} catch (Throwable e) {
 			throw new PropertyUtilsException(e);
 		}

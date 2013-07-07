@@ -22,4 +22,8 @@ public class Instance {
 		BeanUtils.setProperty(instance, property.getName(), value.getEnclosingValue());
 	}
 
+	public Type getType() {
+		return new Type(instance.getClass());
+	}
+
 }

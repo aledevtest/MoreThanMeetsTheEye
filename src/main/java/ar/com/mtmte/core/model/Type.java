@@ -11,10 +11,14 @@ public class Type {
 	}
 
 	public Instance createInstance() {
-		return new Instance(ClassUtils.newInstance(enclosingType));
+		return new Instance(ClassUtils.newInstance(getEnclosingType()));
 	}
 
 	public Instance createInstance(Object object) {
 		return new Instance(object);
+	}
+
+	public Class<?> getEnclosingType() {
+		return enclosingType;
 	}
 }

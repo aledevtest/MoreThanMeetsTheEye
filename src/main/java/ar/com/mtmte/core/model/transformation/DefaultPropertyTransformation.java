@@ -11,7 +11,12 @@ import ar.com.mtmte.core.model.PropertyTransformation;
  */
 public class DefaultPropertyTransformation extends PropertyTransformation {
 
-	public DefaultPropertyTransformation(Property property) {
-		super(property);
+	public DefaultPropertyTransformation(String propertyName) {
+		super(new Property(propertyName));
+	}
+	
+	@Override
+	public String toString() {
+		return "Transform from: " + originProperty.getName() + " to: " + originProperty.getName();
 	}
 }
