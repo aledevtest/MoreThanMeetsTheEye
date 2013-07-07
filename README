@@ -13,5 +13,5 @@ Example: transform to a bean with the same fields/values plus two more fields
 	transformer.defineNewField("selectedField", "selectedValue");
 	transformer.defineNewField("changedField", "changedValue");
 	
-	Object transformed = transformer.transform(bean);
+	Object transformed = transformer.transform(bean); // a Map<String, Object> instance with field:value contents.
 </code>
